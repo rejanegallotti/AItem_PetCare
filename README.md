@@ -21,6 +21,14 @@ Welcome to the Brand Monitoring Challenge for our Build with AI workshop! In thi
 
   Add the variable GOOGLE_API_KEY with the value of the api key from ai studio
 
+
+adk api_server
+
+
+cd 06_challenge/mcp/
+uvicorn src.api:app --host 0.0.0.0 --port 8001 --reload
+
+
 ## 🛠 Workshop Tools & Prerequisites
 
 - **Agent Development Kit (ADK)**
