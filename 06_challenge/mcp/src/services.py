@@ -6,7 +6,7 @@ Returns:
 
 from .repositories import (
     get_mock_twitter_posts,
-    get_reddit_posts,  # Now using real Reddit connection
+    get_reddit_posts,
     get_news_articles,
 )
 from typing import Dict, Any
