@@ -8,6 +8,19 @@ Welcome to the Brand Monitoring Challenge for our Build with AI workshop! In thi
 
 ---
 
+## Setup Instructions
+
+- **Gemini API key**
+  Access google: http://aistudio.google.com/
+
+  Login with your google account.
+
+  Create an api key.
+
+  Create a file named `.env`.
+
+  Add the variable GOOGLE_API_KEY with the value of the api key from ai studio
+
 ## 🛠 Workshop Tools & Prerequisites
 
 - **Agent Development Kit (ADK)**
