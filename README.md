@@ -8,27 +8,6 @@ Welcome to the Brand Monitoring Challenge for our Build with AI workshop! In thi
 
 ---
 
-## Setup Instructions
-
-- **Gemini API key**
-  Access google: http://aistudio.google.com/
-
-  Login with your google account.
-
-  Create an api key.
-
-  Create a file named `.env`.
-
-  Add the variable GOOGLE_API_KEY with the value of the api key from ai studio
-
-
-adk api_server
-
-
-cd 06_challenge/mcp/
-uvicorn src.api:app --host 0.0.0.0 --port 8001 --reload
-
-
 ## 🛠 Workshop Tools & Prerequisites
 
 - **Agent Development Kit (ADK)**
@@ -61,16 +40,15 @@ uvicorn src.api:app --host 0.0.0.0 --port 8001 --reload
 
 ## 📥 Inputs
 
-- `brand_name` (string)
+- `company_name` (string)
   e.g. `"Acme Co."`
 
-- *(Optional)* `start_date` / `end_date` to define the monitoring window.
 
 ---
 
 ## 📈 Expected Output
 
-Your agent should return a **JSON** (or Markdown) report containing:
+Your agent should return a or Markdown report containing:
 
 1. **Executive Summary**
    A 2–3 sentence overview of overall sentiment and top concerns.
@@ -101,13 +79,13 @@ Your agent should return a **JSON** (or Markdown) report containing:
    - Declare functions for data ingestion, analysis, and report generation.
 
 3. **Implement Analysis Pipeline**
-   - Ingest raw mentions → clean/filter → call Gemini functions for sentiment & topics.
+   - Ingest raw mentions → clean/filter/summarize → generate report.
 
 4. **Generate Report**
-   - Aggregate results into the JSON/Markdown structure above.
+   - Get the results into the Markdown structure above.
 
-5. **Demo Your Solution**
-   - Run a live demo for **two** different brand names.
+5. **Run Your Solution**
+   - Run your solution with **two** different brand names.
 
 ---
 
@@ -125,5 +103,45 @@ Your agent should return a **JSON** (or Markdown) report containing:
   2. **Report Quality**: Clarity, completeness, structure.
   3. **Tooling**: Correct use of ADK functions (and MCP if used).
   4. **Code Quality**: Readable, modular, documented.
+
+---
+
+# Setup
+
+## Setup Instructions
+
+- **Gemini API key**
+  Access google: http://aistudio.google.com/
+
+  Login with your google account.
+
+  Create an api key.
+
+  Create a file named `.env`.
+
+  Add the variable GOOGLE_API_KEY with the value of the api key from ai studio
+
+## ADK
+
+Open UI:
+
+```
+adk web
+```
+
+Run the agent as a service:
+
+```
+adk api_server
+```
+
+## Local MCP
+
+to run the local MCP, make sure you have the correct credentials in your .env file
+
+```
+cd 06_challenge/mcp/
+uvicorn src.api:app --host 0.0.0.0 --port 8001 --reload
+```
 
 Good luck, and happy building! 🌟
