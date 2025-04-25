@@ -1,6 +1,9 @@
 from google.adk.agents import LlmAgent
 import math
 
+## The two legs measure a = 21.87654 units and b = 35.12345 units. What is the exact value of the hypotenuse, c?
+
+
 def calculate_hypotenuse(side_a: float, side_b: float) -> float:
   """Calculates the hypotenuse of a right triangle using the Pythagorean theorem.
 
