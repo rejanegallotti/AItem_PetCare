@@ -1,7 +1,6 @@
 from google.adk.agents import ParallelAgent, SequentialAgent, LlmAgent
 from .tools import fetch_weather, fetch_news, geocode_city
 
-# Agents to run in parallel
 weather_agent = LlmAgent(
     name="WeatherAgent",
     model="gemini-2.0-flash",

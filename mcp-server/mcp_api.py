@@ -53,6 +53,6 @@ mcp = FastApiMCP(
     app,
     name="Get the Weather, Latitudes & Longitudes and News",
     description="This MCP server creates functions for Getting the Weather, Latitudes & Longitudes and News",
-    base_url="http://localhost:8001",
+    # base_url="http://localhost:8001",
 )
 mcp.mount()
