@@ -138,5 +138,34 @@ cd 06_challenge/mcp/
 uvicorn src.api:app --host 0.0.0.0 --port 8001 --reload
 ```
 
+## Credentials Websites
+
+## 🛠️ Credenciais do Reddit
+**Site:** [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps)
+**O que você vai precisar:**
+- **Client ID** (ou “App ID”)
+- **Client Secret**
+- **User Agent** (ex.: `my-app/0.1 by seu_usuario`)
+
+---
+
+## 🐦 Credenciais do Twitter
+**Site:** [developer.twitter.com/en/portal/dashboard](https://developer.twitter.com/en/portal/dashboard)
+**O que você vai precisar:**
+- **Bearer Token**
+
+---
+
+## 🗞️ News API (Tavily)
+**Site:** [tavily.com](https://tavily.com/)
+**O que você vai precisar:**
+- **API Key**
+
+---
+
+Basta acessar cada link, seguir o fluxo de “Criar novo app” ou “Obter chave de API” e guardar esses valores com segurança — seu código vai agradecer! 🎉
+
+
+---
 
 Boa sorte e bom desenvolvimento! 🌟
