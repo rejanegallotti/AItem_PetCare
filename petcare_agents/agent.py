@@ -56,6 +56,7 @@ def call_agent(agent: Agent, message_text: str) -> str:
     Envia uma mensagem para um agente usando o Runner do Google ADK e retorna a resposta final.
     """
     session_service = InMemorySessionService()
+    # Para este exemplo, manter 'session_pet_care' está ok para execuções independentes
     session = session_service.create_session(app_name=agent.name, user_id="user1", session_id="session_pet_care")
     runner = Runner(agent=agent, app_name=agent.name, session_service=session_service)
     content = types.Content(role="user", parts=[types.Part(text=message_text)])

@@ -1,4 +1,1 @@
-from . import agent
-from . import agent_petcare
-from . import agent_dieta
-from . import agent_treinamento
+from . import agent # Isso permite que você importe 'agent' de fora da pasta
