@@ -249,3 +249,4 @@ def ai_tem_petcare():
 if __name__ == "__main__":
     print("Chamando a função principal 'ai_tem_petcare()'")
     ai_tem_petcare()
+
