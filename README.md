@@ -1,174 +1,80 @@
-# 🚀 Build with AI: Brand Monitoring Challenge
+# 🐾 AI tem PetCare? 🐾
 
-Welcome to the Brand Monitoring Challenge for our Build with AI workshop! In this exercise you’ll use the ADK (and optionally MCP) to build an end-to-end agent that:
+## Sistema de Agentes de IA para Cuidados com Pets
 
-1. **Ingests** mentions of a brand from multiple sources (Reddit, Twitter, News APIs, general web).
-2. **Analyzes** what people are saying—sentiment, key topics, issue detection.
-3. **Generates** a consolidated report highlighting the brand’s current public perception and areas of concern.
+[![GitHub license](https://img.shields.io/github/license/rejanegallotti/AItem_PetCare)](https://github.com/rejanegallotti/AItem_PetCare/blob/main/LICENSE)
+[![Python version](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-Pro%2FFlash-yellow)](https://ai.google.dev/models)
+[![Google ADK](https://img.shields.io/badge/Google%20ADK-v0.1.0%2B-green)](https://google.github.io/adk-docs/)
 
----
+Este projeto implementa um sistema interativo de agentes de inteligência artificial focado em auxiliar tutores de pets com cuidados básicos. Utilizando o **Google Gemini** como modelo de linguagem e o **Google Agent Development Kit (ADK)** para orquestração dos agentes, o sistema oferece orientações preliminares em áreas essenciais do bem-estar animal.
 
-## 🛠 Workshop Tools & Prerequisites
+## ✨ Funcionalidades
 
-- **Agent Development Kit (ADK)**
-  Tool for defining your agent, tools, and function calls.
+O sistema "AI tem PetCare?" é composto por agentes especializados que podem ajudar com:
 
-- **MCP (Model Context Protocol)** _(optional)_
-  You’ll be given MCP credentials to connect. If your quota runs out, feel free to roll your own connectors or use plain function-calling.
+1.  **Diagnóstico de Saúde Primária:** Avaliação de sintomas comuns, identificação de sinais de alerta e recomendações sobre quando procurar um veterinário.
+2.  **Adestramento em Casa:** Dicas práticas e passo a passo para ensinar comandos básicos e lidar com comportamentos comuns, com foco em reforço positivo.
+3.  **Orientações sobre Dieta Natural:** Informações sobre alimentos seguros e perigosos, e princípios gerais para uma alimentação natural e balanceada (sempre com o aviso da necessidade de um nutricionista veterinário).
 
-- **Gemini**
-  The LLM you’ll use for analysis and report generation.
+## 🧠 Arquitetura
 
-- **Dependencies**
-  Install all required packages from the provided `requirements.txt`:
+O projeto utiliza a arquitetura de agentes do Google ADK, onde diferentes agentes com papéis e instruções específicas colaboram (indiretamente, neste caso, através do fluxo principal) para processar as requisições do usuário. A ferramenta `google_search` é integrada a alguns agentes para permitir a busca de informações externas quando necessário.
 
-  ```bash
-  pip install -r requirements.txt
-  ```
+-   `agente_saude`: Especialista em sintomas e triagem veterinária.
+-   `agente_dieta`: Consultor em nutrição e segurança alimentar.
+-   `agente_treinamento`: Focado em técnicas de adestramento positivo.
+-   `agente_revisor`: Garante a segurança e clareza das respostas geradas pelos outros agentes.
+-   `root_agent`: Ponto de entrada para interfaces que esperam um agente raiz.
 
----
+## 🚀 Como Executar
 
-## 🚦 Challenge Statement
+Para rodar o sistema "AI tem PetCare?" localmente, siga os passos abaixo:
 
-> **Given** the name of a brand (user input),
-> **Build** an AI agent that:
-> 1. Queries **at least three** data sources (e.g., Reddit, Twitter, News API, Web Scraper).
-> 2. Performs **sentiment analysis**, **topic extraction**, and **issue detection** on the collected mentions.
-> 3. Outputs a structured **Brand Monitoring Report** (see “Expected Output” below).
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/rejanegallotti/AItem_PetCare.git](https://github.com/rejanegallotti/AItem_PetCare.git)
+    cd AItem_PetCare
+    ```
 
----
+2.  **Crie e ative um ambiente virtual (recomendado):**
+    ```bash
+    python -m venv venv
+    # No Windows (Git Bash/CMD):
+    source venv/Scripts/activate
+    # No Linux/macOS:
+    source venv/bin/activate
+    ```
 
-## 📥 Inputs
+3.  **Instale as dependências:**
+    ```bash
+    pip install -r requirements.txt
+    # Ou manualmente:
+    # pip install google-genai google-adk python-dotenv
+    ```
 
-- `company_name` (string)
-  e.g. `"Acme Co."`
+4.  **Configure sua Chave API do Google Gemini:**
+    Obtenha sua chave API no [Google AI Studio](https://ai.google.dev/gemini-api/docs/api-key). Crie um arquivo na raiz do projeto chamado `.env` e adicione sua chave:
+    ```dotenv
+    GOOGLE_API_KEY="SUA_CHAVE_API_AQUI"
+    ```
+    **Não compartilhe este arquivo e adicione-o ao seu `.gitignore`!**
 
+5.  **Execute o sistema:**
+    ```bash
+    python petcare_agents/agent.py
+    ```
+    O sistema interativo será iniciado no seu terminal.
 
----
+## 🤝 Contribuição
 
-## 📈 Expected Output
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues para sugestões ou reportar bugs, ou enviar Pull Requests com melhorias.
 
-Your agent should return a or Markdown report containing:
+## 📄 Licença
 
-1. **Executive Summary**
-   A 2–3 sentence overview of overall sentiment and top concerns.
-
-2. **Sentiment Breakdown**
-   Percentage of positive / neutral / negative mentions, **by source**.
-
-3. **Top 5 Topics & Issues**
-   Most frequently discussed themes (e.g., “shipping delays,” “customer support”).
-
-4. **Trend Analysis**
-   Simple time-series summary (mentions per day), highlighting peaks.
-
-5. **Sample Mentions**
-   2–3 representative quotes (with source name and link) for each sentiment category.
-
-6. **Recommendations**
-   Based on detected issues, suggest 2–3 actionable next steps.
-
----
-
-## 🏗 Your Tasks
-
-1. **Configure Connectors**
-   - Use MCP with provided credentials, *or* implement your own via function calls/web scraping.
-
-2. **Define Agent & Tools in ADK**
-   - Declare functions for data ingestion, analysis, and report generation.
-
-3. **Implement Analysis Pipeline**
-   - Ingest raw mentions → clean/filter/summarize → generate report.
-
-4. **Generate Report**
-   - Get the results into the Markdown structure above.
-
-5. **Run Your Solution**
-   - Run your solution with **two** different brand names.
+Este projeto está licenciado sob os termos da Licença MIT. Veja o arquivo [LICENSE](https://github.com/rejanegallotti/AItem_PetCare/blob/main/LICENSE) para mais detalhes.
 
 ---
 
-## 📝 Submission (Suggested)
+Desenvolvido por Rejane Menezes Reis Gallotti
 
-- **GitHub Repo** containing:
-  - `README.md`
-  - Source code for your agent
-  - `requirements.txt`
-  - Example outputs for at least two brands
-
-
-- **Evaluation Criteria** (for your reference):
-  1. **Data Coverage**: ≥3 sources ingested.
-  2. **Report Quality**: Clarity, completeness, structure.
-  3. **Tooling**: Correct use of ADK functions (and MCP if used).
-  4. **Code Quality**: Readable, modular, documented.
-
----
-
-# Setup
-
-## Setup Instructions
-
-- **Gemini API key**
-  Access google: http://aistudio.google.com/
-
-  Login with your google account.
-
-  Create an api key.
-
-  Create a file named `.env`.
-
-  Add the variable GOOGLE_API_KEY with the value of the api key from ai studio
-
-## ADK
-
-Open UI:
-
-```
-adk web
-```
-
-Run the agent as a service:
-
-```
-adk api_server
-```
-
-## Local MCP
-
-to run the local MCP, make sure you have the correct credentials in your .env file
-
-```
-cd 06_challenge/mcp/
-uvicorn src.api:app --host 0.0.0.0 --port 8001 --reload
-```
-
-## Credentials Websites
-
-### 🛠️ Reddit Credentials
-**Website:** [reddit.com/prefs/apps](https://www.reddit.com/prefs/apps)
-**What you’ll need:**
-- **Client ID** (aka “App ID”)
-- **Client Secret**
-- **User Agent** (e.g. `my-app/0.1 by your_username`)
-
----
-
-### 🐦 Twitter Credentials
-**Website:** [developer.twitter.com/en/portal/dashboard](https://developer.twitter.com/en/portal/dashboard)
-**What you’ll need:**
-- **Bearer Token**
-
----
-
-### 🗞️ News API (Tavily)
-**Website:** [tavily.com](https://tavily.com/)
-**What you’ll need:**
-- **API Key**
-
----
-
-Just head to each link, follow their “Create new app” or “Get API key” flows, and then stash these values safely—your code will thank you! 🎉
-
-Good luck, and happy building! 🌟
