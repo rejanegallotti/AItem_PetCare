@@ -1,6 +1,6 @@
 # 🐾 AI tem PetCare? 🐾
 
-![AI tem PetCare Banner]( https://github.com/rejanegallotti/AItem_PetCare/blob/main/petcare_agents/Image%2018%20de%20mai.%20de%202025%2C%2004_27_14.png? raw=true)
+![AI tem PetCare Banner](https://github.com/rejanegallotti/AItem_PetCare/blob/main/petcare_agents/AI_tem_PetCare_banner.png?raw=true)
 
 ## Sistema de Agentes de IA para Cuidados com Pets
 
